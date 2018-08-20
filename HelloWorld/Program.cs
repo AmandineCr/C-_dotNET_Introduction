@@ -15,7 +15,6 @@ namespace HelloWorld
             DayOfWeek today = localDate.DayOfWeek;
             Collection<DayOfWeek> daysOfWeekend = new Collection<DayOfWeek>
             {
-                DayOfWeek.Monday,
                 DayOfWeek.Saturday,
                 DayOfWeek.Sunday
             };
@@ -30,7 +29,12 @@ namespace HelloWorld
             else
                 Console.WriteLine("Bonsoir");
 
+            Message message = new Message();
+
             Console.WriteLine(Environment.UserName);
+            System.Console.Write(Message.helloMessage);
+
+
             Console.WriteLine("Press a key to exit");
             Console.ReadKey();
         }
