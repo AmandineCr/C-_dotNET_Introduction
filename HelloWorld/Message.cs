@@ -1,42 +1,80 @@
-﻿namespace HelloWorld
+﻿using System;
+using System.Collections.ObjectModel;
+
+namespace HelloWorld
 {
 
 
     public class Message
     {
-        // Attribut basique
-        public string Hello = "Bonjour";
+        DateTime localDate = DateTime.Now;
+        string myName = Environment.UserName;
+        int morningStart;
+        int afternoonStart;
+        int eveningStart;
 
-        // Attribut + getter/setter
-        private string _Bonjour = "Hello";
 
-        public string Bonjour
+        Boolean Morning
         {
             get
             {
-                return _Bonjour;
-            }
-            set
-            {
-                _Bonjour = value;
+                return localDate.Hour >= morningStart && localDate.Hour < afternoonStart;
             }
         }
 
-        // Propiété par default
-        public string World
-        { get; set; } // = Default value
-
-        // Prop
-        public string Name
+        Boolean Afternoon
         {
-            get { return Hello + ' ' + Bonjour; } // Propriété calculé
-            set { Name = value; }
+            get
+            {
+                return localDate.Hour >= afternoonStart && localDate.Hour < eveningStart;
+            }
         }
 
-        public Message(string newMsg) => Msg = newMsg;
+        DayOfWeek Today
+        {
+            get
+            {
+                return localDate.DayOfWeek;
+            }
+        }
 
+        Collection<DayOfWeek> daysOfWeekend = new Collection<DayOfWeek>
+        {
+            DayOfWeek.Saturday,
+            DayOfWeek.Sunday
+        };
+
+        public string GetHelloMessage()
+        {
+            return Greeting + ' ' + myName;
+        }
+
+        string Greeting
+        {
+            get
+            {
+                if (daysOfWeekend.Contains(Today))
+                    return "Bon weekend !";
+                else
+                    if (Morning)
+                    return "Bonjour c'est le matin";
+                else if (Afternoon)
+                    return "Bon après-midi";
+                else
+                    return "Bonsoir";
+            }
+        }
+
+        // Propriété
         public string Msg
         { get; set; }
+
+        public Message(int morning = 8, int afternoon = 13, int evening = 18)
+        {
+            morningStart = morning;
+            afternoonStart = afternoon;
+            eveningStart = evening;
+        }
     }
 }
 
