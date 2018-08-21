@@ -1,26 +1,42 @@
-﻿using System;
-
-namespace HelloWorld
+﻿namespace HelloWorld
 {
 
 
     public class Message
     {
+        // Attribut basique
+        public string Hello = "Bonjour";
 
-        public string newMsg;
+        // Attribut + getter/setter
+        private string _Bonjour = "Hello";
 
-        public Message(string msg)
+        public string Bonjour
         {
-            newMsg = msg;
-
+            get
+            {
+                return _Bonjour;
+            }
+            set
+            {
+                _Bonjour = value;
+            }
         }
 
-        public string ShowMsg()
+        // Propiété par default
+        public string World
+        { get; set; } // = Default value
+
+        // Prop
+        public string Name
         {
-            return newMsg;
-
-
+            get { return Hello + ' ' + Bonjour; } // Propriété calculé
+            set { Name = value; }
         }
+
+        public Message(string newMsg) => Msg = newMsg;
+
+        public string Msg
+        { get; set; }
     }
 }
 

@@ -8,36 +8,45 @@ namespace HelloWorld
 
         static void Main(string[] args)
         {
-            DateTime localDate = DateTime.Now;
-            Boolean morning = localDate.Hour >= 9 && localDate.Hour < 13;
-            Boolean afternoon = localDate.Hour >= 13 && localDate.Hour <= 18;
+            Message message = new Message("blabla");
 
-            DayOfWeek today = localDate.DayOfWeek;
-            Collection<DayOfWeek> daysOfWeekend = new Collection<DayOfWeek>
-            {
-                DayOfWeek.Saturday,
-                DayOfWeek.Sunday
-            };
+            message.Bonjour = "HEEEEELLLLO";
 
-            if (daysOfWeekend.Contains(today))
-                Console.WriteLine("Bon weekend !");
-            else
-                if (morning)
-            {
-                Console.WriteLine("Bonjour c'est le matin");
+            string msg = message.Name;
 
-                Message test = new Message("coucou");
-                Console.WriteLine(test.ShowMsg());
-            }
-
-            else if (afternoon)
-                Console.WriteLine("Bon après-midi");
-            else
-                Console.WriteLine("Bonsoir");
-
-            Console.WriteLine(Environment.UserName);
-            Console.WriteLine("Press a key to exit");
+            Console.WriteLine(msg);
+            Console.WriteLine(message.Msg);
             Console.ReadKey();
+
+            //DateTime localDate = DateTime.Now;
+            //Boolean morning = localDate.Hour >= 9 && localDate.Hour < 13;
+            //Boolean afternoon = localDate.Hour >= 13 && localDate.Hour <= 18;
+
+            //DayOfWeek today = localDate.DayOfWeek;
+            //Collection<DayOfWeek> daysOfWeekend = new Collection<DayOfWeek>
+            //{
+            //    DayOfWeek.Saturday,
+            //    DayOfWeek.Sunday
+            //};
+
+            //if (daysOfWeekend.Contains(today))
+            //    Console.WriteLine("Bon weekend !");
+            //else
+            //    if (morning)
+            //{
+            //    Console.WriteLine("Bonjour c'est le matin");
+            //    Message sayHello = new Message("Hello");
+            //    Console.WriteLine(sayHello.ShowMsg());
+            //}
+
+            //else if (afternoon)
+            //    Console.WriteLine("Bon après-midi");
+            //else
+            //    Console.WriteLine("Bonsoir");
+
+            //Console.WriteLine(Environment.UserName);
+            //Console.WriteLine("Press a key to exit");
+            //Console.ReadKey();
 
         }
     }
