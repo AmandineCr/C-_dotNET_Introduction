@@ -7,14 +7,24 @@ namespace HelloWorld
 
         static void Main(string[] args)
         {
-            for (string i = ""; i != "exit"; i = Console.ReadLine())
+          
+            string line ="";
+            do
             {
+                if (line == "")
+                {
+                    Message message = new Message(morning: 3, evening: 14);
+                    Console.WriteLine(message.GetHelloMessage());
+                }
+                else
+                {
+                    Console.WriteLine("Error try again");
+                }
 
-                Message message = new Message(morning: 3, evening: 14);
-
-                Console.WriteLine(message.GetHelloMessage());
-
+                line = Console.ReadLine();
             }
+            while (line != "exit");
         }
+
     }
 }
