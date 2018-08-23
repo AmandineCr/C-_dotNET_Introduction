@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HelloWorldTests;
+using System;
 using System.Collections.ObjectModel;
 
 namespace HelloWorld
@@ -7,8 +8,12 @@ namespace HelloWorld
 
     public class Message
     {
-        DateTime localDate = DateTime.Now;
-        string myName = Environment.UserName;
+        public IDateTimeProvider DateTimeProvider = new RealDateTime(); 
+        DateTime LocalDate => DateTimeProvider.Date;
+
+        public INameProvider NameProvider = new RealName();
+        string myName => NameProvider.Name;
+
         int morningStart;
         int afternoonStart;
         int eveningStart;
@@ -18,7 +23,7 @@ namespace HelloWorld
         {
             get
             {
-                return localDate.Hour >= morningStart && localDate.Hour < afternoonStart;
+                return LocalDate.Hour >= morningStart && LocalDate.Hour < afternoonStart;
             }
         }
 
@@ -26,7 +31,7 @@ namespace HelloWorld
         {
             get
             {
-                return localDate.Hour >= afternoonStart && localDate.Hour < eveningStart;
+                return LocalDate.Hour >= afternoonStart && LocalDate.Hour < eveningStart;
             }
         }
 
@@ -34,7 +39,7 @@ namespace HelloWorld
         {
             get
             {
-                return localDate.DayOfWeek;
+                return LocalDate.DayOfWeek;
             }
         }
 

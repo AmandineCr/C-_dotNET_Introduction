@@ -13,7 +13,7 @@ namespace HelloWorld
             {
                 if (line == "")
                 {
-                    Message message = new Message(morning: 3, evening: 14);
+                    Message message = new Message();
                     Console.WriteLine(message.GetHelloMessage());
                 }
                 else
