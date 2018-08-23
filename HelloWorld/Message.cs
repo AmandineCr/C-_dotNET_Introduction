@@ -57,7 +57,7 @@ namespace HelloWorld
                     return "Bon weekend !";
                 else
                     if (Morning)
-                    return "Bonjour c'est le matin";
+                    return "Bonjour";
                 else if (Afternoon)
                     return "Bon après-midi";
                 else
